@@ -1,0 +1,10 @@
+Introduction
+============
+
+hadoop-streaming is a collection of libraries which make writing Hadoop
+Streaming tasks easy.
+
+Author
+======
+
+Coda Hale <coda.hale@gmail.com>

@@ -3,7 +3,7 @@
 import unittest
 from helpers import test
 
-from hadoop.parsers import LineParser, TSVParser
+from hadoop.parsers import LineParser, KeyValueParser, TSVParser
 
 class ParserTests(unittest.TestCase):
   def setUp(self):
@@ -19,6 +19,14 @@ class ParserTests(unittest.TestCase):
     self.assertEqual(2, len(result))
     self.assertEqual('one\ttwo\tthree', result[0])
     self.assertEqual('four\tfive\tsix', result[1])
+  
+  @test
+  def key_value_parser_should_parse_keys_and_values(self):
+    p = KeyValueParser(iterable=self.fixture)
+    result = [l for l in p]
+    self.assertEqual(2, len(result))
+    self.assertEqual(('one', 'two\tthree'), result[0])
+    self.assertEqual(('four', 'five\tsix'), result[1])
   
   @test
   def tsv_parser_should_parse_tuples(self):

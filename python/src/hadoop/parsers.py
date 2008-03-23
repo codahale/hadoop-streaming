@@ -33,7 +33,25 @@ class LineParser(object):
     """
     return line.strip()
 
-class TSVParser(LineParser):
+
+class KeyValueParser(LineParser):
+  """
+    A key/value parser. Each key and value are separated by a tab, as per
+    Hadoop Streaming.
+  """
+  def parse_line(self, line):
+    """
+      Given a line, strips it, and returns the key and value.
+      
+      >>> parser.parse_line('blah\\tdingo\\tyay\\n')
+      ('blah', 'dingo\\tyay')
+    """
+    line = super(KeyValueParser, self).parse_line(line)
+    key, value = line.split('\t', 1)
+    return key, value    
+
+
+class TSVParser(KeyValueParser):
   """
     A Tab-Separated Value parser. Each line is split by tabs and passed to the
     mapper or reducer as a (key, values) tuple.
@@ -46,5 +64,6 @@ class TSVParser(LineParser):
     """
       Parses a line of tab-separated text into tuples.
     """
-    values = line.strip().split('\t')
-    return values.pop(0), tuple(values)
+    key, value = super(TSVParser, self).parse_line(line)
+    return key, tuple(value.split('\t'))
+

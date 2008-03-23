@@ -14,7 +14,7 @@ class ParserTests(unittest.TestCase):
   
   @test
   def line_parser_should_parse_single_lines(self):
-    p = LineParser(self.fixture)
+    p = LineParser(iterable=self.fixture)
     result = [l for l in p]
     self.assertEqual(2, len(result))
     self.assertEqual('one\ttwo\tthree', result[0])
@@ -22,12 +22,15 @@ class ParserTests(unittest.TestCase):
   
   @test
   def tsv_parser_should_parse_tuples(self):
-    p = TSVParser(self.fixture)
+    p = TSVParser(iterable=self.fixture)
     result = [l for l in p]
     self.assertEqual(2, len(result))
     self.assertEqual(('one', ('two', 'three')), result[0])
     self.assertEqual(('four', ('five', 'six')), result[1])
   
+
+def suite():
+  return unittest.makeSuite(ParserTests)
 
 if __name__ == '__main__':
   unittest.main()

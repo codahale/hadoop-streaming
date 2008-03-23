@@ -6,8 +6,7 @@ import test_parsers, test_reporters
 
 def test_suite():
   return unittest.TestSuite((
-    test_parsers.suite(),
-    test_reporters.suite()
+    test_parsers.suite()
   ))
 
 if __name__ == '__main__':

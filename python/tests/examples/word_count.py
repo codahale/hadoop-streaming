@@ -3,7 +3,7 @@
 
 # only necessary because we want to use the non-installed version of the lib
 import sys
-sys.path.insert(0, 'src')
+sys.path.insert(0, 'lib')
 
 
 from collections import defaultdict

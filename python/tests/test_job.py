@@ -1,29 +1,13 @@
 #!/usr/bin/env python
 # encoding: utf-8
-from collections import defaultdict
 import unittest
 from helpers import test
+from examples.word_count import WordCountJob
 
 from hadoop import Job
 from hadoop.parsers import LineParser, KeyValueParser
 from hadoop.collectors import Collector
 import hadoop.runner
-
-class WordCountJob(Job):
-  """A sample word-count Hadoop job."""
-  
-  def map(self, line, collector):
-    """Splits line into words, emits counts."""
-    for word in line.split(' '):
-      collector.collect(word.strip(), 1)
-  
-  def reduce(self, iterator, collector):
-    """Reduces word counts, collects totals."""
-    accumulator = defaultdict(int)
-    for word, count in iterator:
-      accumulator[word] += int(count)
-    for word, total in accumulator.iteritems():
-      collector.collect(word, total)
 
 
 class MockStream(object):

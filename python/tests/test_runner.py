@@ -23,6 +23,7 @@ class MockJob(object):
     self.actions.append('start_reduce')
 
 class RunnerTests(unittest.TestCase):
+  # XXX : test more than just --map and --reduce
   def setUp(self):
     self.mock_job = MockJob()
     self.runner = Runner(self.get_mock_job)

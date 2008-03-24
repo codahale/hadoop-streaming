@@ -3,7 +3,6 @@
 """
 
 from optparse import OptionParser
-import sys
 
 class Runner(object):
   def __init__(self, job_cls, description=None, version=None):
@@ -12,7 +11,7 @@ class Runner(object):
     self.description = description
     self.version = version
   
-  def main(self, arguments=sys.argv):
+  def main(self, arguments):
     p = OptionParser(description=self.description, version=self.version)
     p.add_option('-m', '--map', action='store_true', dest='map', default=False,
                                 help='map input values to intermediary key/value pairs')

@@ -2,12 +2,13 @@
 # encoding: utf-8
 import unittest
 
-import test_parsers, test_collectors
+import test_collectors, test_parsers, test_runner
 
 def test_suite():
   return unittest.TestSuite((
     test_collectors.suite(),
-    test_parsers.suite()
+    test_parsers.suite(),
+    test_runner.suite()
   ))
 
 if __name__ == '__main__':

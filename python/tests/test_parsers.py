@@ -14,7 +14,7 @@ class ParserTests(unittest.TestCase):
   
   @test
   def line_parser_should_parse_single_lines(self):
-    p = LineParser(iterable=self.fixture)
+    p = LineParser(self.fixture)
     result = [l for l in p]
     self.assertEqual(2, len(result))
     self.assertEqual('one\ttwo\tthree', result[0])
@@ -22,7 +22,7 @@ class ParserTests(unittest.TestCase):
   
   @test
   def key_value_parser_should_parse_keys_and_values(self):
-    p = KeyValueParser(iterable=self.fixture)
+    p = KeyValueParser(self.fixture)
     result = [l for l in p]
     self.assertEqual(2, len(result))
     self.assertEqual(('one', 'two\tthree'), result[0])
@@ -30,7 +30,7 @@ class ParserTests(unittest.TestCase):
   
   @test
   def tsv_parser_should_parse_tuples(self):
-    p = TSVParser(iterable=self.fixture)
+    p = TSVParser(self.fixture)
     result = [l for l in p]
     self.assertEqual(2, len(result))
     self.assertEqual(('one', ('two', 'three')), result[0])

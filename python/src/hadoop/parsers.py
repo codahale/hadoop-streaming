@@ -1,7 +1,6 @@
 """
   Input parsers for Hadoop tasks.
 """
-from sys import stdin
 from itertools import imap
 
 class LineParser(object):
@@ -13,19 +12,19 @@ class LineParser(object):
     >>> lines = [line for line in p]
     ['blah', 'blee', 'blorg']
   """
-  def __init__(self, iterable=stdin):
+  def __init__(self, stream):
     """
       Creates a new LineParser instance which will iterate over the provided
       iterable.
     """
     super(LineParser, self).__init__()
-    self.iterable = iterable
+    self.stream = stream
   
   def __iter__(self):
     """
       Returns an iterator which returns each line coming in via the stream.
     """
-    return imap(self.parse_line, self.iterable)
+    return imap(self.parse_line, self.stream)
   
   def parse_line(self, line):
     """

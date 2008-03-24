@@ -1,8 +1,6 @@
 """
   Output collectors for Hadoop tasks.
 """
-from sys import stdin
-
 class Collector(object):
   """
     A basic string/string collector for key/value pairs.
@@ -10,7 +8,7 @@ class Collector(object):
     >>> collector.collect('key', 'value')
     key   value
   """
-  def __init__(self, stream=stdin):
+  def __init__(self, stream):
     """
       Creates a new Collector instance which outputs data to the provided
       stream.

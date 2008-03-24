@@ -1,5 +1,5 @@
 import sys, unittest
-sys.path.append('src')
+sys.path.insert(0, 'src')
 
 def fixedGetTestCaseNames(self, testCaseClass):
   """Return a sorted sequence of method names found within testCaseClass

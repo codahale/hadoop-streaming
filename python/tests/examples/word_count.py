@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+# only necessary because we want to use the non-installed version of the lib
 import sys
-sys.path.append('src')
+sys.path.insert(0, 'src')
+
+
 from collections import defaultdict
 from hadoop import Job
 

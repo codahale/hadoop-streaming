@@ -1,7 +1,7 @@
 """
   Output collectors for Hadoop tasks.
 """
-class Collector(object):
+class KeyValueCollector(object):
   """
     A basic string/string collector for key/value pairs.
     
@@ -13,7 +13,7 @@ class Collector(object):
       Creates a new Collector instance which outputs data to the provided
       stream.
     """
-    super(Collector, self).__init__()
+    super(KeyValueCollector, self).__init__()
     self.stream = stream
   
   def collect(self, key, value):
@@ -23,7 +23,7 @@ class Collector(object):
     self.stream.write('%s\t%s\n' % (key, value))
   
 
-class TSVCollector(Collector):
+class TSVCollector(KeyValueCollector):
   """
     A collector which outputs multiple, tab-separated values.
     

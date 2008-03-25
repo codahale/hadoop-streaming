@@ -3,7 +3,7 @@
 import unittest
 from helpers import test
 
-from hadoop.collectors import Collector, TSVCollector
+from hadoop.collectors import KeyValueCollector, TSVCollector
 
 class MockStdOut(object):
   def __init__(self):
@@ -24,7 +24,7 @@ class CollectorTests(unittest.TestCase):
   
   @test
   def collector_should_output_key_and_value_to_stdout(self):
-    collector = Collector(stream=self.stdout)
+    collector = KeyValueCollector(stream=self.stdout)
     collector.collect('key', 'value')
     self.assertEqual(['key\tvalue\n'], self.stdout.read_lines())
   

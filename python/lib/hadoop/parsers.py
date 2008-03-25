@@ -11,6 +11,11 @@ class LineParser(object):
     >>> p = LineParser(sys.stdin)
     >>> lines = [line for line in p]
     ['blah', 'blee', 'blorg']
+    
+    Your map() or reduce() method should have the following profile:
+      
+      f(self, line, collector)
+      
   """
   def __init__(self, stream):
     """
@@ -37,6 +42,10 @@ class KeyValueParser(LineParser):
   """
     A key/value parser. Each key and value are separated by a tab, as per
     Hadoop Streaming.
+    
+    Your map() or reduce() method should have the following profile:
+      
+      f(self, key, value, collector)
   """
   def parse_line(self, line):
     """
@@ -58,6 +67,10 @@ class TSVParser(KeyValueParser):
     >>> p = TSVParser(sys.stdin)
     >>> lines = [line for line in p]
     [('key', ('1', '2', '3')), ('another', ('4', '5', '6'))]
+    
+    Your map() or reduce() method should have the following profile:
+      
+      f(self, key, values, collector)
   """
   def parse_line(self, line):
     """

@@ -6,7 +6,7 @@ from examples.word_count import WordCountJob
 
 from hadoop import Job
 from hadoop.parsers import LineParser, KeyValueParser
-from hadoop.collectors import Collector
+from hadoop.collectors import KeyValueCollector
 import hadoop.runner
 
 
@@ -47,11 +47,11 @@ class JobTests(unittest.TestCase):
   
   @test
   def job_should_have_a_map_collector(self):
-    self.assertEqual(Collector, self.job.map_collector)
+    self.assertEqual(KeyValueCollector, self.job.map_collector)
   
   @test
   def job_should_have_a_reduce_collector(self):
-    self.assertEqual(Collector, self.job.reduce_collector)
+    self.assertEqual(KeyValueCollector, self.job.reduce_collector)
   
   @test
   def job_should_map_parser_output_to_collector_input(self):
